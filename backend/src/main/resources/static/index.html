@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cross Procrop | AI Crop Protection</title>
+    <!-- Modern Typography: Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- FontAwesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Sidebar / Navigation -->
+        <nav class="sidebar">
+            <div class="logo">
+                <i class="fa-solid fa-leaf"></i>
+                <h2>ProCrop</h2>
+            </div>
+            <ul class="nav-links">
+                <li class="active" data-target="dashboard"><i class="fa-solid fa-chart-line"></i> <span>Dashboard</span></li>
+                <li data-target="scanner"><i class="fa-solid fa-camera"></i> <span>AI Scanner</span></li>
+                <li data-target="chatbot"><i class="fa-solid fa-message"></i> <span>Chatbot</span></li>
+                <li data-target="weather"><i class="fa-solid fa-cloud-sun"></i> <span>Weather Alerts</span></li>
+                <li data-target="market"><i class="fa-solid fa-money-bill-trend-up"></i> <span>Market Prices</span></li>
+            </ul>
+        </nav>
+
+        <!-- Main Content Area -->
+        <main class="main-content">
+            <!-- Header -->
+            <header>
+                <div class="header-title">
+                    <h1 id="page-title">Farmer Dashboard</h1>
+                    <p id="page-subtitle">Welcome back, Aditya. Your farm is looking healthy.</p>
+                </div>
+                <div class="user-profile">
+                    <div class="avatar"><i class="fa-solid fa-user"></i></div>
+                </div>
+            </header>
+
+            <!-- Dashboard View -->
+            <section id="dashboard" class="view-section active-view">
+                <div class="dashboard-cards">
+                    <div class="card glass-card">
+                        <div class="card-icon"><i class="fa-solid fa-temperature-half"></i></div>
+                        <div class="card-info">
+                            <h3>Current Weather</h3>
+                            <p class="value">28°C, Partly Cloudy</p>
+                        </div>
+                    </div>
+                    <div class="card glass-card">
+                        <div class="card-icon warning"><i class="fa-solid fa-bug"></i></div>
+                        <div class="card-info">
+                            <h3>Pest Alerts</h3>
+                            <p class="value">Locust warning in your area</p>
+                        </div>
+                    </div>
+                    <div class="card glass-card">
+                        <div class="card-icon success"><i class="fa-solid fa-seedling"></i></div>
+                        <div class="card-info">
+                            <h3>Crop Health</h3>
+                            <p class="value">Wheat - Excellent</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="recent-scans glass-card">
+                    <h3>Recent AI Scans</h3>
+                    <ul class="scan-list">
+                        <li>
+                            <i class="fa-solid fa-check-circle success"></i>
+                            <div>
+                                <h4>Field 1 (Wheat)</h4>
+                                <p>Scanned 2 hours ago - Healthy</p>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </section>
+
+            <!-- AI Scanner View -->
+            <section id="scanner" class="view-section">
+                <div class="scanner-container glass-card">
+                    <h2>Crop Disease Scanner</h2>
+                    <p>Upload a clear photo of the affected crop leaf for instant AI analysis.</p>
+                    
+                    <div class="upload-area" id="uploadArea">
+                        <i class="fa-solid fa-cloud-arrow-up icon-large"></i>
+                        <p>Click or drag image here to scan</p>
+                        <input type="file" id="imageInput" accept="image/*" hidden>
+                    </div>
+
+                    <div id="scanResult" class="scan-result hidden">
+                        <div class="result-header">
+                            <i class="fa-solid fa-microscope text-primary"></i>
+                            <h3>Analysis Complete</h3>
+                        </div>
+                        <div class="result-details">
+                            <p><strong>Detected:</strong> <span id="diseaseName">Loading...</span></p>
+                            <p><strong>Confidence:</strong> <span id="confidenceScore">--</span>%</p>
+                            <p><strong>Recommendation:</strong> <span id="recommendationText">Loading...</span></p>
+                        </div>
+                        <button class="btn-primary mt-3" id="resetScanBtn">Scan Another</button>
+                    </div>
+
+                    <div id="loadingOverlay" class="loading-overlay hidden">
+                        <div class="spinner"></div>
+                        <p>AI is analyzing the leaf...</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Chatbot View -->
+            <section id="chatbot" class="view-section">
+                <div class="chatbot-container glass-card">
+                    <div class="chat-header">
+                        <h2>AgriBot (Farmer Assistant)</h2>
+                        <span class="badge">Hindi/English</span>
+                    </div>
+                    <div class="chat-history" id="chatHistory">
+                        <div class="chat-message bot">
+                            <div class="avatar"><i class="fa-solid fa-robot"></i></div>
+                            <div class="message-content">नमस्ते! मैं आपका एआई किसान सहायक हूँ। मैं आपकी कैसे मदद कर सकता हूँ?</div>
+                        </div>
+                    </div>
+                    <div class="chat-input-area">
+                        <button class="icon-btn" id="voiceBtn"><i class="fa-solid fa-microphone"></i></button>
+                        <input type="text" id="chatInput" placeholder="Type your message...">
+                        <button class="icon-btn primary" id="sendMsgBtn"><i class="fa-solid fa-paper-plane"></i></button>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+    <script src="js/app.js"></script>
+</body>
+</html>
